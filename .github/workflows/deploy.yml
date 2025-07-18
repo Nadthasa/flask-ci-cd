@@ -23,9 +23,10 @@ jobs:
         pip install -r requirements.txt
 
     - name: 🚀 Deploy to Railway
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      run: |
-        npm install -g railway
-        railway up --yes
+  env:
+    RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+  run: |
+    npm install -g @railway/cli
+    railway up --yes
+
 
