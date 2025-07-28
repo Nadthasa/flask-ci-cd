@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -48,7 +47,6 @@ def delete(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-=======
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
@@ -79,4 +77,3 @@ if __name__ == '__main__':
         db.create_all()  # Buat tabel di database
     app.run(debug=True)
 
->>>>>>> 3f43ec1389eab1a1da8ee78b50b704b78beedf08
