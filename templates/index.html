@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨Nadya Blog✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Selamat Datang di <span>Nadya Blog</span> ✨</h1>
+        <p>Tempat berbagi cerita, inspirasi, dan pengalaman unik sehari-hari</p>
+        <a href="{{ url_for('create') }}" class="btn-primary hero-btn">+ Tulis Ceritamu</a>
+    </header>
+
+    <!-- Post Section -->
+    <div class="container">
+        <h2 class="page-title">🌸 Post Terbaru 🌸</h2>
+        {% if posts %}
+            <div class="card-grid">
+                {% for post in posts %}
+                <div class="card">
+                    <div class="card-content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content[:120] }}...</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="{{ url_for('edit', id=post.id) }}" class="btn-edit">✏️ Edit</a>
+                        <a href="{{ url_for('delete', id=post.id) }}" class="btn-delete" onclick="return confirm('Yakin mau hapus?')">🗑️ Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-post">
+                <p>Belum ada cerita, ayo mulai tulis sekarang!</p>
+                <a href="{{ url_for('create') }}" class="btn-primary">+ Tulis Post Pertama</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Nadya's Blog. Dibuat dengan <span class="love">❤</span> dan secangkir kopi ☕</p>
+        <p>Ikuti aku di:
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a> |
+            <a href="#">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

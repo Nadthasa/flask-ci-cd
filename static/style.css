@@ -1,0 +1,122 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff0f5;
+    color: #333;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(120deg, #ff80bf, #ff4da6);
+    color: white;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.hero h1 span { color: #ffe6f2; }
+.hero-btn { margin-top: 1rem; display: inline-block; }
+
+/* Navbar style optional jika mau dipakai di halaman lain */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #ff80bf;
+    color: white;
+}
+.logo { margin: 0; font-weight: bold; font-size: 1.5rem; }
+
+/* Button Style */
+.btn-primary, .btn-edit, .btn-delete {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-primary { background: #ff4da6; }
+.btn-primary:hover { background: #ff1a8c; transform: scale(1.05); }
+.btn-edit { background: #4da6ff; }
+.btn-edit:hover { background: #1a8cff; transform: scale(1.05); }
+.btn-delete { background: #ff6666; }
+.btn-delete:hover { background: #ff1a1a; transform: scale(1.05); }
+
+.container { padding: 2rem; }
+.page-title { text-align: center; margin-bottom: 20px; font-size: 1.8rem; color: #ff4da6; }
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.card-content h3 { margin-top: 0; color: #ff4da6; }
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* No Post Style */
+.no-post { text-align: center; padding: 2rem; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #ff80bf;
+    color: white;
+    margin-top: 40px;
+    border-radius: 40px 40px 0 0;
+}
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+.love { color: red; font-size: 1.2rem; }
+/* Form Style */
+.form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-card label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-card input, .form-card textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.form-card button {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+

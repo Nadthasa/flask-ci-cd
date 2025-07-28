@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulis Cerita Baru ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="hero small-hero">
+        <h1>📝 Tulis Cerita Baru</h1>
+        <p>Bagikan cerita, inspirasi, atau pengalaman unikmu</p>
+    </header>
+
+    <div class="container">
+        <form action="" method="POST" class="form-card">
+            <label for="title">Judul Cerita</label>
+            <input type="text" name="title" id="title" placeholder="Masukkan judul" value="{{ post.title if post else '' }}" required>
+
+            <label for="content">Isi Cerita</label>
+            <textarea name="content" id="content" rows="8" placeholder="Tulis cerita kamu di sini..." required>{{ post.content if post else '' }}</textarea>
+
+            <button type="submit" class="btn-primary">
+                {% if post %}💾 Simpan Perubahan{% else %}+ Publikasikan{% endif %}
+            </button>
+        </form>
+
+        <div style="text-align:center; margin-top:20px;">
+            <a href="{{ url_for('index') }}" class="btn-edit">← Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Nadya's Blog. Dibuat dengan <span class="love">❤</span></p>
+    </footer>
+</body>
+</html>
