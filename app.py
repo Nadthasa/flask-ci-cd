@@ -6,17 +6,20 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 db = SQLAlchemy(app)
 
+# Model
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
+# Index
 @app.route('/')
 def index():
     posts = Post.query.order_by(Post.date.desc()).all()
     return render_template('index.html', posts=posts)
 
+# Create
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
@@ -28,6 +31,7 @@ def create():
         return redirect(url_for('index'))
     return render_template('create.html', post=None)
 
+# Edit
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     post = Post.query.get_or_404(id)
@@ -38,6 +42,7 @@ def edit(id):
         return redirect(url_for('index'))
     return render_template('create.html', post=post)
 
+# Delete
 @app.route('/delete/<int:id>')
 def delete(id):
     post = Post.query.get_or_404(id)
@@ -47,33 +52,3 @@ def delete(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env file
-load_dotenv()
-
-app = Flask(__name__)
-
-# Gunakan DATABASE_URL dari .env
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-# Contoh model
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-
-@app.route('/')
-def home():
-    return 'Hello from Flask with PostgreSQL!'
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # Buat tabel di database
-    app.run(debug=True)
-
